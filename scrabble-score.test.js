@@ -20,32 +20,37 @@ import { test, expect } from "vitest";
 // });
 
 test.each(onePoint)("the letter %s returns a score of 1", (letter) => {
-  expect(calculateScrabbleScore(letter)).toBe(1)
-})
+  expect(calculateScrabbleScore(letter)).toBe(1);
+});
 
 test.each(twoPoint)("the letter %s returns a score of 2", (letter) => {
-  expect(calculateScrabbleScore(letter)).toBe(2)
-})
+  expect(calculateScrabbleScore(letter)).toBe(2);
+});
 
 test.each(threePoint)("the letter %s returns a score of 3", (letter) => {
-  expect(calculateScrabbleScore(letter)).toBe(3)
-})
+  expect(calculateScrabbleScore(letter)).toBe(3);
+});
 
 test.each(fourPoint)("the letter %s returns a score of 4", (letter) => {
-  expect(calculateScrabbleScore(letter)).toBe(4)
-})
+  expect(calculateScrabbleScore(letter)).toBe(4);
+});
 
 test.each(fivePoint)("the letter %s returns a score of 5", (letter) => {
-  expect(calculateScrabbleScore(letter)).toBe(5)
-})
+  expect(calculateScrabbleScore(letter)).toBe(5);
+});
 
 test.each(eightPoint)("the letter %s returns a score of 8", (letter) => {
-  expect(calculateScrabbleScore(letter)).toBe(8)
-})
+  expect(calculateScrabbleScore(letter)).toBe(8);
+});
 
 test.each(tenPoint)("the letter %s returns a score of 10", (letter) => {
-  expect(calculateScrabbleScore(letter)).toBe(10)
-})
+  expect(calculateScrabbleScore(letter)).toBe(10);
+});
+
+// Test that the total of the word ICED will return 7
+test("Total of the word ICED equals 7", () => {
+  expect(calculateScrabbleScore("ICED")).toBe(7);
+});
 
 // test("the two point letters returns a score of 2", () => {
 //   expect(calculateScrabbleScore(twoPoint)).toBe(2);

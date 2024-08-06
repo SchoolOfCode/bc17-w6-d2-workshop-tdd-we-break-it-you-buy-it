@@ -1,31 +1,30 @@
-export const onePoint = ["a", "e", "i", "l", "n", "o", "r", "s", "t", "u"];
-export const twoPoint = ["d", "g"];
-export const threePoint = ["b", "c", "m", "p"];
-export const fourPoint = ["f", "h", "v", "w", "y"];
-export const fivePoint = ["k"];
-export const eightPoint = ["j", "x"];
-export const tenPoint = ["q", "z"];
+export const onePoint = ["A", "E", "I", "L", "N", "O", "R", "S", "T", "U"];
+export const twoPoint = ["D", "G"];
+export const threePoint = ["B", "C", "M", "P"];
+export const fourPoint = ["F", "H", "V", "W", "Y"];
+export const fivePoint = ["K"];
+export const eightPoint = ["J", "X"];
+export const tenPoint = ["Q", "Z"];
 
-export function calculateScrabbleScore(letter) {
-  if (onePoint.includes(letter)) {
-    return 1
-  } 
-  else if (twoPoint.includes(letter)){
-    return 2
-  } 
-  else if (threePoint.includes(letter)){
-    return 3
+export function calculateScrabbleScore(word) {
+  let wordScore = 0;
+  // loop through the provided word and add to wordScore
+  for (let i = 0; i < word.length; i++) {
+    if (onePoint.includes(word.charAt(i))) {
+      wordScore += 1;
+    } else if (twoPoint.includes(word.charAt(i))) {
+      wordScore += 2;
+    } else if (threePoint.includes(word.charAt(i))) {
+      wordScore += 3;
+    } else if (fourPoint.includes(word.charAt(i))) {
+      wordScore += 4;
+    } else if (fivePoint.includes(word.charAt(i))) {
+      wordScore += 5;
+    } else if (eightPoint.includes(word.charAt(i))) {
+      wordScore += 8;
+    } else if (tenPoint.includes(word.charAt(i))) {
+      wordScore += 10;
+    }
   }
-    else if (fourPoint.includes(letter)){
-        return 4
-    }
-    else if (fivePoint.includes(letter)){
-        return 5
-    }
-    else if (eightPoint.includes(letter)){
-        return 8
-    }
-    else if (tenPoint.includes(letter)){
-        return 10
-    }
+  return wordScore;
 }

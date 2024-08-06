@@ -10,15 +10,6 @@ import {
 } from "./scrabble-score";
 import { test, expect } from "vitest";
 
-// test to make sure 'a' returns a score of 1
-// test("the one point letters returns a score of 1", () => {
-//   expect(
-//     onePoint.forEach((e) => {
-//       calculateScrabbleScore(e);
-//     })
-//   ).toBe(1);
-// });
-
 test.each(onePoint)("the letter %s returns a score of 1", (letter) => {
   expect(calculateScrabbleScore(letter)).toBe(1);
 });
@@ -52,26 +43,20 @@ test("Total of the word ICED equals 7", () => {
   expect(calculateScrabbleScore("ICED")).toBe(7);
 });
 
-// test("the two point letters returns a score of 2", () => {
-//   expect(calculateScrabbleScore(twoPoint)).toBe(2);
-// });
+// Test that an error is thrown if any character is outside of A-Z
+test("Test that anything other than A-Z throws an error", () => {
+  expect(() => calculateScrabbleScore("1CED")).toThrowError(
+    "Can only contain letters from A-Z"
+  );
+});
 
-// test("the three point letters returns a score of 3", () => {
-//   expect(calculateScrabbleScore(threePoint)).toBe(3);
-// });
+// Test that a player gets an extra 50 points if they use all 7 tiles
+test("Test that using all 7 tiles gives 50 extra points", () => {
+  expect(calculateScrabbleScore("RETURNS")).toBe(57);
+});
 
-// test("the four point letters returns a score of 4", () => {
-//   expect(calculateScrabbleScore(fourPoint)).toBe(4);
-// });
-
-// test("the five point letters returns a score of 5", () => {
-//   expect(calculateScrabbleScore(fivePoint)).toBe(5);
-// });
-
-// test("the eight point letters returns a score of 8", () => {
-//   expect(calculateScrabbleScore(eightPoint)).toBe(8);
-// });
-
-// test("the ten point letters returns a score of 10", () => {
-//   expect(calculateScrabbleScore(tenPoint)).toBe(10);
-// });
+// Test that answers can be submitted in any case
+test("Test case insensitivity", () => {
+  expect(calculateScrabbleScore("iced")).toBe(7);
+  expect(calculateScrabbleScore("iCed")).toBe(7);
+});

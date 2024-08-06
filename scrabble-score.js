@@ -8,6 +8,11 @@ export const tenPoint = ["Q", "Z"];
 
 export function calculateScrabbleScore(word) {
   let wordScore = 0;
+  if (word.length === 7) {
+    wordScore += 50;
+  }
+  // ensure input is capitalised
+  word = word.toUpperCase();
   // loop through the provided word and add to wordScore
   for (let i = 0; i < word.length; i++) {
     if (onePoint.includes(word.charAt(i))) {
@@ -24,6 +29,8 @@ export function calculateScrabbleScore(word) {
       wordScore += 8;
     } else if (tenPoint.includes(word.charAt(i))) {
       wordScore += 10;
+    } else {
+      throw new Error("Can only contain letters from A-Z");
     }
   }
   return wordScore;

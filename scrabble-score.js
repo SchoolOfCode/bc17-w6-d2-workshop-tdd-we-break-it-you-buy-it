@@ -11,6 +11,9 @@ export function calculateScrabbleScore(word) {
   if (word.length === 7) {
     wordScore += 50;
   }
+  if (typeof word !== "string") {
+    throw new Error("Can only contain letters from A-Z");
+  }
   // ensure input is capitalised
   word = word.toUpperCase();
   // loop through the provided word and add to wordScore

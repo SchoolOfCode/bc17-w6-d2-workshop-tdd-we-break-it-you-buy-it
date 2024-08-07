@@ -47,6 +47,24 @@ test.each(tenPoint)("the letter %s returns a score of 10", (letter) => {
   expect(calculateScrabbleScore(letter)).toBe(10)
 })
 
+test("Testing word scores are accurate", () => {
+  expect(calculateScrabbleScore('iced')).toBe(7)
+  expect(calculateScrabbleScore('robot')).toBe(7)
+})
+
+test("The test should error if anything other than a word/letter is received", () => {
+  expect(() => calculateScrabbleScore("500")).toThrowError("Letters only")
+  expect(() => calculateScrabbleScore("@;]]")).toThrowError("Letters only")
+})
+
+test("A 7 letter word should return an extra 50 bonus points", () => {
+  expect(calculateScrabbleScore('playful')).toBe(65)
+})
+
+test("Uppercase and lowercase should work the same", () => {
+  expect(calculateScrabbleScore("DoMiNiC")).toBe(62)
+})
+
 // test("the two point letters returns a score of 2", () => {
 //   expect(calculateScrabbleScore(twoPoint)).toBe(2);
 // });
